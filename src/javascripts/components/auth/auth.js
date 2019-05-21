@@ -13,8 +13,9 @@ const signMeIn = () => {
 };
 
 const authBuilder = () => {
-  let domString = '<button id ="google-auth">';
-  domString += `<img src=${googleImage}/>`;
+  let domString = '<h2 class="log-title">Log In</h2><button id ="google-auth">';
+  domString += `<img class="button" src=${googleImage}/>`;
+  domString += '</div>';
   util.printToDom('auth', domString);
   document.getElementById('google-auth').addEventListener('click', signMeIn);
 };
