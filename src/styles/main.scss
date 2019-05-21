@@ -1,5 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: darkslateblue;
+  background-image: url(https://i.pinimg.com/originals/b7/27/e4/b727e435e9b7fd560b14bd33269e77b7.jpg);
+  background-size: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.navbar-brand{
+text-transform: uppercase;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "firebase",
+  "name": "birfday",
   "version": "1.0.0",
   "description": "",
   "main": "src/javascripts/main.js",
@@ -40,6 +40,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "firebase": "^6.0.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0"
   }
