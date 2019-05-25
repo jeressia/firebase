@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 
 import auth from './components/auth/auth';
-import birfday from './components/birfday/birfday';
+
 import myNavbar from './components/myNavbar/myNavbar';
 
 import authData from './helpers/data/authData';
@@ -15,7 +15,6 @@ const init = () => {
   myNavbar.navbarEvents();
   authData.checkLoginStatus();
   auth.authBuilder();
-  birfday.birfdayBuilder();
 };
 
 init();
