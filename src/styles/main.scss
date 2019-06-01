@@ -1,4 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+
+@import '../javascripts/components/birfday/birfday.scss';
 
 body {
   background-image: url(https://i.pinimg.com/originals/b7/27/e4/b727e435e9b7fd560b14bd33269e77b7.jpg);
@@ -10,5 +14,37 @@ body {
 }
 
 .navbar-brand{
-text-transform: uppercase;
+font-family: 'Great Vibes', cursive;
+font-size: 200%;
+}
+
+.navbar {
+  font-family: 'Poiret One', cursive;
+}
+.nav-link{
+  font-size: 150%;
+}
+
+.nav-link:hover {
+  letter-spacing: 1px;
+}
+
+.myForm{
+  max-width: 75%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.add-friend-title{
+  text-align: center;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+  color:#56c4c4;
+}
+
+.friend-btn{
+  justify-content: center;
 }
