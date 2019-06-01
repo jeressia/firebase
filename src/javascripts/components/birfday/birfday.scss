@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+
+#birfday{
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+}
+.birfday{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+  max-width: 75%;
+  background-color: white;
+  margin: 0 auto;
+  padding: 10px;
+  .img-thumbnail{
+    max-width: 175px;
+    margin: 10px;
+  }
+  img:hover{
+    transform: scale(1.1);
+  }
+  .bdate{
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    color:#56c4c4;
+  }
+  .blocate{
+    font-family: 'Poiret One', cursive;
+  }
+}

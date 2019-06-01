@@ -20,6 +20,7 @@ const createNewFriend = (e) => {
       document.getElementById('email').value = '';
       birfdayDiv.classList.remove('hide');
       newFriendDiv.classList.add('hide');
+      getFriends(firebase.auth().currentUser.uid); // eslint-disable-line no-use-before-define
     })
     .catch(err => console.error('no new friends', err));
   console.error(newFriend);
@@ -31,10 +32,22 @@ const newFriendButton = () => {
   document.getElementById('saveNewFriend').addEventListener('click', createNewFriend);
 };
 
-const showFriends = () => {
-  const domString = '<button id="add-friend-btn" class="btn btn-secondary">Add Friend</button>';
+const showFriends = (friends) => {
+  let domString = '<button id="add-friend-btn" class="btn btn-info">Add Friend</button>';
+  friends.forEach((friend) => {
+    domString += `<h3>${friend.name}`;
+  });
   util.printToDom('friends', domString);
   document.getElementById('add-friend-btn').addEventListener('click', newFriendButton);
 };
 
-export default { showFriends };
+const getFriends = (uid) => {
+  friendsData.getFriendsByUid(uid)
+    .then((friends) => {
+      console.error('friends array', friends);
+      showFriends(friends);
+    })
+    .catch(err => console.error('no friends', err));
+};
+
+export default { getFriends };
