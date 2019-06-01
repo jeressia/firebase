@@ -3,6 +3,9 @@ import 'firebase/auth';
 
 import friendsData from '../../helpers/data/friendsData';
 import util from '../../helpers/util';
+import birfdayData from '../../helpers/data/birfdayData';
+import rsvpData from '../../helpers/data/rsvpData';
+import SMASH from '../../helpers/smash';
 
 const birfdayDiv = document.getElementById('birfday');
 const newFriendDiv = document.getElementById('new-friend');
@@ -68,15 +71,15 @@ const showFriends = (friends) => {
     domString += `<td id=${friend.rsvpId}>`;
     domString += '<div class="custom-control custom-radio custom-control-inline">';
     domString += `<input type="radio" id="radio1_${friend.id}" name="radio-buttons_${friend.id}" class="custom-control-input">`;
-    domString += `<label class="custom-control-label" for="radio1_${friend.id}">Yassss!</label>`;
+    domString += `<label class="custom-control-label" for="radio1_${friend.id}">Yes</label>`;
     domString += '</div>';
     domString += '<div class="custom-control custom-radio custom-control-inline">';
     domString += `<input type="radio" id="radio2_${friend.id}" name="radio-buttons_${friend.id}" class="custom-control-input">`;
-    domString += `<label class="custom-control-label" for="radio2_${friend.id}">No.</label>`;
+    domString += `<label class="custom-control-label" for="radio2_${friend.id}">No</label>`;
     domString += '</div>';
     domString += '<div class="custom-control custom-radio custom-control-inline">';
     domString += `<input type="radio" id="radio3_${friend.id}" name="radio-buttons_${friend.id}" class="custom-control-input">`;
-    domString += `<label class="custom-control-label" for="radio3_${friend.id}">Maybe</label>`;
+    domString += `<label class="custom-control-label" for="radio3_${friend.id}">Unknown</label>`;
     domString += '</div>';
     domString += '</td>';
     domString += `<th scope="col"><button id=${friend.id} class="btn btn-danger delete-friend">X</button></th>`;
@@ -93,8 +96,13 @@ const showFriends = (friends) => {
 const getFriends = (uid) => {
   friendsData.getFriendsByUid(uid)
     .then((friends) => {
-      console.error('friends array', friends);
-      showFriends(friends);
+      birfdayData.getBirfdayByUid(uid).then((bday) => {
+        rsvpData.getRsvpsByBirthdayId(bday.id).then((rsvps) => {
+          const finalFriends = SMASH.friendRsvps(friends, rsvps);
+          console.error(finalFriends);
+          showFriends(finalFriends);
+        });
+      });
     })
     .catch(err => console.error('no friends', err));
 };
